@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from .models import Neighborhood,Profile,Business, Post
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileForm
+from .forms import ProfileForm, BusinessForm, PostForm
 
 # Create your views here.
 def index(request):
@@ -58,3 +58,7 @@ def businesses(request):
 
     return render(request,'businesses.html',{"businesses":businesses,"form":form})
 
+@login_required(login_url='/accounts/login/')
+def post(request,id):
+    post = Post.objects.get(id=id)
+    return render(request,'post.html',{"post":post})
