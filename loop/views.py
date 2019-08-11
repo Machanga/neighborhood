@@ -6,8 +6,28 @@ from .forms import ProfileForm, BusinessForm, PostForm
 
 # Create your views here.
 def index(request):
-    
-    return render(request, 'index.html')
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(user = current_user)
+    except:
+        return redirect('edit_profile',username = current_user.username)
+
+    try:
+        posts = Post.objects.filter(neighborhood = profile.neighborhood)
+    except:
+        posts = None
+
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+            post.neighborhood = profile.neighborhood
+            post.save()
+        return redirect('index')
+    else:
+        form = PostForm()
+    return render(request,'index.html',{"posts":posts,"profile":profile,"form":form})  
 
 @login_required(login_url='/accounts/login/')
 def edit_profile(request,username):
