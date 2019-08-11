@@ -36,3 +36,25 @@ def edit_profile(request,username):
             form = ProfileForm()
     return render(request,'edit.html',{"form":form})
 
+@login_required(login_url='/accounts/login/')
+def businesses(request):
+    current_user = request.user
+    neighborhood = Profile.objects.get(user = current_user).neighborhood
+    if request.method == 'POST':
+        form = BusinessForm(request.POST)
+        if form.is_valid():
+            business = form.save(commit=False)
+            business.user = current_user
+            business.neighborhood = neighborhood
+            business.save()
+        return redirect('businesses')
+    else:
+        form = BusinessForm()
+
+    try:
+        businesses = Business.objects.filter(neighborhood = neighborhood)
+    except:
+        businesses = None
+
+    return render(request,'businesses.html',{"businesses":businesses,"form":form})
+
