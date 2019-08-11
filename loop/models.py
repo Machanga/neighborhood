@@ -34,3 +34,13 @@ class Location(models.Model):
 
     def __str__(self):
         return self.name
+
+class Profile(models.Model):
+    user = models.ForeignKey(User,on_delete = models.CASCADE)
+    name = models.CharField(max_length = 50,null=True)
+    id = models.IntegerField()
+    neighborhood = models.ForeignKey(Neighborhood,on_delete = models.CASCADE)
+    email = models.EmailField(max_length = 60)
+
+    def __str__(self):
+        return self.user.username
