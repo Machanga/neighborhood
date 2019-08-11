@@ -79,6 +79,17 @@ def businesses(request):
     return render(request,'businesses.html',{"businesses":businesses,"form":form})
 
 @login_required(login_url='/accounts/login/')
+def search(request):
+    current_user = request.user
+    if 'search' in request.GET and request.GET["search"]:
+        search_term = request.GET.get("search")
+        businesses = Business.objects.filter(name__icontains=search_term)
+        return render(request,'search.html',{'businesses':businesses})
+    else:
+        message = "You haven't searched for any business"
+        return render(request, 'search.html',{"message":message})
+
+@login_required(login_url='/accounts/login/')
 def post(request,id):
     post = Post.objects.get(id=id)
     return render(request,'post.html',{"post":post})
