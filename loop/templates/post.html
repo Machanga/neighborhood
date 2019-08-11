@@ -1,0 +1,18 @@
+{% include 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+              <div class="card-panel">
+                <div>
+                    <h3>{{post.title}}</h3>
+                </div>
+                    <p>{{post.description}}</p>
+                    <p>Posted by: {{post.user}}</p>
+
+              </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
