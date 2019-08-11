@@ -46,3 +46,32 @@ class NeighborhoodTestClass(TestCase):
         self.neighborhood.update_occupants()
         self.updated_neighborhood = Neighborhood.objects.get(id=1)
         self.assertTrue(self.updated_neighborhood.occupants == 2)
+
+class BusinessTestClass(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser', password='qwerty12345')
+        self.business = Business(id=1,name='Test',user=self.user,neighborhood=self.neighborhood,email='test@test.com')
+        self.neighborhood.save()
+        self.business.save()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.business,Business))
+
+    def test_create_business(self):
+        self.business.create_business()
+        self.assertTrue(len(Business.objects.all()) > 0)
+
+    def test_delete_business(self):
+        self.business.delete_business()
+        self.assertTrue(len(Business.objects.all()) == 0)
+
+    def test_find_business(self):
+        self.business = Business.find_business(1)
+        self.assertEqual(self.business.id, 1)
+
+    def test_update_business(self):
+        self.business = Business.find_business(1)
+        self.business.name = 'Test name'
+        self.business.update_business()
+        self.updated_business = Business.find_business(1)
+        self.assertEqual(self.updated_business.name, 'Test name')
