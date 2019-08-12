@@ -1,17 +1,30 @@
 {% include 'base.html' %}
-{% load bootstrap3 %}
+{% load bootstrap4 %}
 {% block content %}
+<!-- Card -->
+
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-              <div class="card-panel">
-                <div>
-                    <h3>{{post.title}}</h3>
-                </div>
-                    <p>{{post.description}}</p>
-                    <p>Posted by: {{post.user}}</p>
+                <div class="card card-cascade">
 
-              </div>
+  <!-- Card image -->
+  <div class="view view-cascade gradient-card-header blue-gradient">
+    <!-- Title -->
+    <h2 class="card-header-title mb-3"><strong>Title:</strong> {{post.title}}</h2>
+    <!-- Subtitle -->
+    <p class="card-header-subtitle mb-0"><strong>Posted by:</strong> {{post.user}}</p>
+  </div>
+
+  <!-- Card content -->
+  <div class="card-body card-body-cascade text-center">
+    <!-- Text -->
+    <p class="card-text"><strong>Description:</strong> {{post.description}}</p>
+
+  </div>
+
+</div>
+<!-- Card -->
             </div>
         </div>
     </div>
