@@ -3,7 +3,7 @@ from .models import Profile,Neighborhood,Business,Post
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('name','id','neighborhood','email')
+        fields = ('name','ID','neighborhood','email')
 
 class BusinessForm(forms.ModelForm):
     class Meta:
