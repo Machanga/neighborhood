@@ -3,12 +3,16 @@
 ## By: Florence Wanjiru
 
 ## Description
-This is an application where a user can login, post and view details of businesses around that neighbourhood and details of other users in that neighbourhood.
+This is an application where a user can login, post and view details of businesses around that neighbourhood and posts by other users in that neighbourhood.
 
 ## Link to live site
+https://hoodloop.herokuapp.com/
 
 ## BDD
-
+| Behavior                  | Input                           | Output 
+|-------------------------- |---------------------------------|-----------------------------------------------------|
+| Add Post                  | Click the add button            | view your post in the home page                     |
+| Add business              | click the add business button   | view your business details in the business template |
 
 ## Setup
 ### Requirements
@@ -34,7 +38,7 @@ Install the dependancies needed:
 ## Technologies
 1. Python 3.6
 2. Django 1.1
-3. Bootstrap 3
+3. Bootstrap 3 and 4
 
 ## Known bugs
 There are no known bugs as of now.
