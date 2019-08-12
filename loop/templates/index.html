@@ -1,24 +1,26 @@
 {% include 'base.html' %}
 {% load bootstrap3%}
+{% load bootstrap4%}
 {% block content%}
-    <div class="container">
-        <div class="row">
+    
             <div>
                 <h3 class="center-align">{{profile.neighborhood}} Neighborhood</h3>
             </div>
             {% for post in posts %}
+            <div class="container">
+        <div class="row">
             <div class="col-md-4">
              <div class="card-panel">
                <h5>{{post.title}}</h5>
-               <p>{{post.description|truncatechars:200}}</p>
-               <a class="waves-effect waves-light btn" href="{% url 'post' post.id %}">Read</a>
+               <p>{{post.description}}</p>
              </div>
+            </div>
+            </div>
             </div>
             {% endfor %}
             <div class="fixed-action-btn">
-                <a class="btn-floating btn-large blue modal-trigger" href="#modal">Add Post</a>
+                <a class="btn-floating btn-large blue modal-trigger" href="#modal1">Add Post</a>
             </div>
-        </div>
         <!-- Modal Structure -->
         <div id="modal1" class="modal" style="max-height: 800px !important;">
           <form action="{%url 'index' %}" method='post' enctype="multipart/form-data">
@@ -36,7 +38,6 @@
           <script type="text/javascript">
               $(document).ready(function(){
                 $('.modal').modal();
-                $('select').formSelect();
               });
 
           </script>
