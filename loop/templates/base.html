@@ -1,28 +1,33 @@
-{% load bootstrap3 %}
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="shortcut icon" type="image/x-icon" href="home.png" />
+        {% if title %}
+        <title>Neighborhood - {{title}}</title>
+        {% else %}
+        <title>Neighborhood</title>
+        {% endif %}
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% if title%}
-  <title>Neighborhood{{title}}</title>
-  {% endif%}
-
-  {% block styles %}
-    {% bootstrap_css %}
-  {% endblock %}
-</head>
-
-<body>
-{% include 'navbar.html'%}
-  {% block content %}  {% endblock%}
-
-  {% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    {% bootstrap_javascript %}
-  {% endblock %}
-</body>
-
+        {% block styles %}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        {% endblock%}
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        {% block content %}
+        {% endblock %}
+        {% block scripts %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <script type="text/javascript">
+            </script>
+        {% endblock %}
+    </body>
 </html>
