@@ -15,8 +15,10 @@ import django_heroku
 import dj_database_url
 from decouple import config,Csv
 
+MODE=config('MODE', default="dev")
 SECRET_KEY = config('SECRET_KEY')
-# DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'loop',
     'bootstrap3',
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
