@@ -10,7 +10,6 @@ urlpatterns = [
    url(r'^search/$',views.search,name='search'),
    url('^post/(?P<id>\d+)',views.post,name='post'),
 ]
-]
 
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

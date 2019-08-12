@@ -9,7 +9,7 @@ class Neighborhood(models.Model):
     admin = models.ForeignKey(User,on_delete = models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.neighborhood_name
 
     def create_neighborhood(self):
         self.save()
@@ -38,7 +38,7 @@ class Location(models.Model):
 class Profile(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE)
     name = models.CharField(max_length = 50,null=True)
-    id = models.IntegerField()
+    ID = models.IntegerField()
     neighborhood = models.ForeignKey(Neighborhood,on_delete = models.CASCADE)
     email = models.EmailField(max_length = 60)
 
